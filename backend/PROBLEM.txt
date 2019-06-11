@@ -1,0 +1,80 @@
+Given a resource "todo" with fields defined as:
+  - title: string
+  - done_flag: string, "true" or "false"
+  - deadline: date, formatted as "yyyy-mm-dd"
+
+Please implement this endpoints:
+
+=============================================================
+request:
+POST /todo
+{
+  "title": "Todo title",
+  "deadline": "2019-10-01"
+}
+
+response:
+{
+  "id": 1,
+  "title": "Todo title",
+  "done_flag": "false",
+  "deadline": "2019-10-01"
+}
+=============================================================
+
+============================================================
+request: 
+GET /todo
+
+response:
+[
+  {
+    "id": 1,
+    "title": "Todo title",
+    "done_flag": "false",
+    "deadline": "2019-10-01"
+  }
+]
+=============================================================
+
+=============================================================
+GET /todo/1
+
+response:
+{
+  "id": 1,
+  "title": "Todo title",
+  "done_flag": "false",
+  "deadline": "2019-10-01"
+}
+=============================================================
+
+=============================================================
+request:
+PUT /todo/1
+{
+  "done_flag": true
+}
+
+response:
+{
+  "id": 1,
+  "title": "Todo title",
+  "done_flag": "true",
+  "deadline": "2019-10-01"
+}
+==============================================================
+
+==============================================================
+request:
+DELETE /todo/1
+
+response:
+<no response body>
+==============================================================
+
+
+### Instruction
+Please put your solution in "solution" directory, and be careful to commit all files in the directory.
+
+The solution will greaded on feature completeness and correctness. Creating tests and commit history will be added as bonus.

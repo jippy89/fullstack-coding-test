@@ -1,0 +1,17 @@
+Please create a simple todo list application that able to:
+1. Create a new todo item
+2. Edit a todo item
+3. Remove a todo item.
+
+A todo item is a simple text that is taken from a text input, and created by a click of an 'add' button.
+If the text input field is empty or filled with space, then no new todo item will be created.
+
+
+A sample solution to this problem is depicted in image "example.gif" in this directory.
+
+ 
+## Instruction:
+Please put your solution in "solution" directory
+This test will be graded manually by feature completeness, and coding style, not by styling.
+Please use recent javascript front-end framework (ie. vue, react, or angular).
+

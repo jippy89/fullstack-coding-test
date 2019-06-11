@@ -1,0 +1,23 @@
+Given an array of N element [e1, e2, e3, e4, ... , eN], increment any duplicate elements until all elements are unique.
+Please compute the minimum sum the resulting array elements.
+
+Example 1:
+input: [3,2,1,2,7]
+output: 17
+
+explanation:
+the input has element '2' duplicates, so increment one of them to get [3,3,1,2,7]
+the resulting array has element '3' duplicates, so increment one of them to get [4,3,1,2,7]
+because there all elements are unique, compute the sum: 4 + 3 + 1 + 2 + 7 = 17
+so we get the output 17.
+
+Example 2:
+input: [1,1,1,1,1]
+output: 15
+
+Example 3:
+input: [1,2,2,2,2]
+output: 15
+
+Instruction:
+you can write the solution by completing the source code in one of the directories corresponding to programming language of your choice.
