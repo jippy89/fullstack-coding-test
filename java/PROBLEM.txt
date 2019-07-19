@@ -1,0 +1,37 @@
+In this challenge, you will be asked to build on an abstract class and initialize an instance of each class with a variable. The program will then test your implementation by retrieving the data you stored. The class diagram is shown in file uml.png in this directory.
+
+The locked code in the editor does the following:
+1. Declares an abstract class named Car with the implementations for getIsSedan() and getSeats() methods, as well as an abstract method named getMileage() .
+2. Creates WagonR, HondaCity, or InnovaCrysta object based on input (0 for WagonR, 1 for HondaCity and 2 for InnovaCrysta).
+3. Calls the getIsSedan() , getSeats() , and getMileage() methods on the object.
+
+The details for each car are provided below -
+1. WagonR is not a sedan and has 4 seats.
+2. HondaCity is a sedan and has 4 seats.
+3. InnovaCrysta is not a sedan and has 6 seats.
+
+Complete the code in the editor below to implement the following:
+1. Three classes named, WagonR , HondaCity , and InnovaCrysta that inherit from the Car class.
+2. One integer argument is provided to the constructor which is the mileage of the car.
+3. Each class must implement the getMileage() method which returns a string in the form of
+  "<mileage> kmpl" where <mileage> is the value provided to constructor.
+
+Input Format:
+1. first line will be the card model(between 0 and 2 inclusive).
+2. second line will be the mileage(between 5 and 30 inclusive).
+
+Example 1:
+input:
+0
+20
+
+output:
+A WagonR is not Sedan, is 4-seater, and has a mileage of around 20 kmpl.
+
+Example 2:
+input:
+1
+23
+
+output:
+A HondaCity is Sedan, is 4-seater, and has a mileage of around 23 kmpl.
