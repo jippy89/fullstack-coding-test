@@ -9,12 +9,18 @@
 export default {
   data () {
     return {
+      counter: 0,
       todo: ''
     }
   },
   methods: {
     onSubmit (evt) {
-      this.$emit('addTodo', this.todo)
+      const todoObject = {
+        id: ++this.counter,
+        text: this.todo,
+        status: false
+      }
+      this.$emit('addTodo', todoObject)
     }
   }
 }
