@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <TodoInput @addTodo="addTodo" />
+    <TodoListContainer :todoList="todoList" />
   </div>
 </template>
 
 <script>
 import TodoInput from './components/Todo/TodoInput'
+import TodoListContainer from './components/Todo/TodoListContainer'
 
 export default {
   name: 'app',
   components: {
-    TodoInput
+    TodoInput,
+    TodoListContainer
   },
   data () {
     return {
@@ -19,7 +22,7 @@ export default {
   },
   methods: {
     addTodo (todo) {
-      console.log(todo)
+      this.todoList.push(todo)
     }
   }
 }
