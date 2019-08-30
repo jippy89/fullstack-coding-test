@@ -1,12 +1,27 @@
 <template>
   <div id="app">
-    Howdy hooo
+    <TodoInput @addTodo="addTodo" />
   </div>
 </template>
 
 <script>
+import TodoInput from './components/Todo/TodoInput'
+
 export default {
   name: 'app',
+  components: {
+    TodoInput
+  },
+  data () {
+    return {
+      todoList: []
+    }
+  },
+  methods: {
+    addTodo (todo) {
+      console.log(todo)
+    }
+  }
 }
 </script>
 
