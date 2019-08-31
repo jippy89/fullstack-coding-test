@@ -23,6 +23,15 @@ const Todo = new class TodoSchema {
     })
   }
 
+  findById (res, todoId) {
+    return fs.readFile(dbPath, 'utf8', (err, todoListBuffer) => {
+      if (err) throw err
+      const parsedTodoList = JSON.parse(todoListBuffer)
+      const foundTodo = parsedTodoList.find(todo => todo.id == todoId)
+      res.json(foundTodo)
+    })
+  }
+
   create (res, todo) {
     // Start with one or none
     todo = { id: 1, ...todo, done_flag: "false" }
