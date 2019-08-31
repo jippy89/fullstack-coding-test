@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "bf29b6b3-b480-471c-8e9c-9118f33fed94",
+		"name": "backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "todo",
+			"item": [
+				{
+					"name": "GET todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/todo",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"todo"
+							]
+						},
+						"description": "Receive all todos"
+					},
+					"response": []
+				},
+				{
+					"name": "GET todo/:todoId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/todo/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"todo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST todo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Doin' work\",\n\t\"deadline\": \"2019-09-01\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/todo",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"todo"
+							]
+						},
+						"description": "Insert a new 'todo' into the database"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT todo/:todoId",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"done_flag\": \"false\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/todo/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"todo",
+								"1"
+							]
+						},
+						"description": "Update 'todo' with id of ':todoId'"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE todo/:todoId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								""
+							]
+						},
+						"description": "Delete 'todo' based on 'todoId'"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
