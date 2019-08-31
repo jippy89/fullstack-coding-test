@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -14,13 +16,16 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'addTodo'
+    ]),
     onSubmit (evt) {
       const todoObject = {
         id: ++this.counter,
         text: this.todo,
         status: false
       }
-      this.$emit('addTodo', todoObject)
+      this.addTodo(todoObject)
     }
   }
 }
