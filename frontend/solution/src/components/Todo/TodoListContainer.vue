@@ -7,12 +7,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  props: {
-    todoList: {
-      type: Array,
-      required: true
-    }
+  computed: {
+    ...mapGetters([
+      'todoList'
+    ])
   }
 }
 </script>
