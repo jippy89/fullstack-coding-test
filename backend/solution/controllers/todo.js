@@ -9,7 +9,8 @@ const todoController = new class ToDoController {
 
   // POST /todos
   postTodo (req, res) {
-    res.send("POST /todos")
+    const { title, deadline } = req.body
+    return todoModel.create(res, { title, deadline })
   }
 }
 
