@@ -15,6 +15,14 @@ const Todo = new class TodoSchema {
     this.deadline = deadline // must be in "yyyy-mm-dd" format
   }
 
+  findAll (res) {
+    return fs.readFile(dbPath, 'utf8', (err, todoListBuffer) => {
+      if (err) throw err
+      const parsedTodoList = JSON.parse(todoListBuffer)
+      res.json(parsedTodoList)
+    })
+  }
+
   create (res, todo) {
     // Start with one or none
     todo = { id: 1, ...todo, done_flag: "false" }
@@ -37,17 +45,6 @@ const Todo = new class TodoSchema {
         })
       }
     })
-  }
-
-  static findAll () {
-    // Read to db
-    // return all!
-  }
-
-  static findById () {
-    // Read to db
-    // Receive id
-    // return the foundTodo
   }
 }
 

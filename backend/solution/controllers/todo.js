@@ -4,7 +4,7 @@ const todoController = new class ToDoController {
   
   // GET /todos
   getTodo (req, res) {
-    res.send("Hola soy 'getTodos'!")
+    todoModel.findAll(res)
   }
 
   // POST /todos
