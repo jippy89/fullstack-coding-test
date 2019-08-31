@@ -82,6 +82,20 @@ const Todo = new class TodoSchema {
       }
     })
   }
+
+  delete (res, todoId) {
+    fs.readFile(dbPath, 'utf8', (err, todoListBuffer) => {
+      if(err) throw err
+      const parsedTodoList = JSON.parse(todoListBuffer)
+
+      // Filter the todolist
+      const filteredTodoList = parsedTodoList.filter(todo => todo.id != todoId)
+      fs.writeFile(dbPath, JSON.stringify(filteredTodoList), err => {
+        if(err) throw err
+        return res.json()
+      })
+    })
+  }
 }
 
 module.exports = Todo

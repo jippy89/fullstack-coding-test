@@ -15,4 +15,7 @@ router.post('/', TodoController.postTodo)
 // PUT /todos/:todoId
 router.put('/:todoId', TodoController.putTodoById)
 
+// DELETE /todo/:todoId
+router.delete('/:todoId', TodoController.deleteTodoById)
+
 module.exports = router

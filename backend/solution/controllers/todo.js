@@ -25,6 +25,12 @@ const todoController = new class ToDoController {
     const { title, deadline, done_flag } = req.body
     return todoModel.update(res, { id: todoId, title, deadline, done_flag })
   }
+
+  // DELETE /todo/:todoId
+  deleteTodoById (req, res) {
+    const todoId = req.params.todoId
+    return todoModel.delete(res, todoId)
+  }
 }
 
 module.exports = todoController
