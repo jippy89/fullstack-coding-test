@@ -18,6 +18,13 @@ const todoController = new class ToDoController {
     const { title, deadline } = req.body
     return todoModel.create(res, { title, deadline })
   }
+
+  // PUT /todo/:todoId
+  putTodoById (req, res) {
+    const todoId = req.params.todoId
+    const { title, deadline, done_flag } = req.body
+    return todoModel.update(res, { id: todoId, title, deadline, done_flag })
+  }
 }
 
 module.exports = todoController

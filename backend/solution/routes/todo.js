@@ -12,4 +12,7 @@ router.get('/:todoId', TodoController.getTodoById)
 // POST /todos
 router.post('/', TodoController.postTodo)
 
+// PUT /todos/:todoId
+router.put('/:todoId', TodoController.putTodoById)
+
 module.exports = router

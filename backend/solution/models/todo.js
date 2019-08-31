@@ -55,6 +55,33 @@ const Todo = new class TodoSchema {
       }
     })
   }
+
+  update (res, updatedTodo) {
+    fs.readFile(dbPath, 'utf8', (err, todoListBuffer) => {
+      if(err) throw err
+      const parsedTodoList = JSON.parse(todoListBuffer)
+
+      // Find TodoList
+      const foundTodo = parsedTodoList.find(todo => todo.id == updatedTodo.id)
+      if (foundTodo) {
+        updatedTodo = {
+          id: foundTodo.id,
+          title: !updatedTodo.title ? foundTodo.title : updatedTodo.title, 
+          deadline: !updatedTodo.deadline ? foundTodo.deadline : updatedTodo.deadline, 
+          done_flag: !updatedTodo.done_flag ? foundTodo.done_flag : updatedTodo.done_flag 
+        }
+        parsedTodoList[foundTodo.id - 1] = updatedTodo
+        fs.writeFile(dbPath, JSON.stringify(parsedTodoList), (err) => {
+          if(err) throw err
+          return res.json(parsedTodoList[foundTodo.id - 1])
+        })
+      } else {
+        res.json({
+          msg: "Todo not found"
+        })
+      }
+    })
+  }
 }
 
 module.exports = Todo
