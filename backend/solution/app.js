@@ -1,13 +1,12 @@
-const http = require('http')
+const express = require('express'),
+      app     = express()
 
 const PORT = 3000
 
-const app = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Hello World!');
-  res.end();
+app.get('/', (req, res) => {
+  res.send("Hola soy Express!")
 })
-
+  
 app.listen(PORT, () => {
-  console.log(`Server has started at localhost:${PORT}`)
+  console.log(`Express server has started at localhost:${PORT}`)
 })
