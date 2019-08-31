@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <TodoInput @addTodo="addTodo" />
-    <TodoListContainer :todoList="todoList" />
+    <TodoInput />
+    <TodoListContainer />
   </div>
 </template>
 
@@ -14,16 +14,6 @@ export default {
   components: {
     TodoInput,
     TodoListContainer
-  },
-  data () {
-    return {
-      todoList: []
-    }
-  },
-  methods: {
-    addTodo (todo) {
-      this.todoList.push(todo)
-    }
   }
 }
 </script>
