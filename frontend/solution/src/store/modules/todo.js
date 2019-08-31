@@ -15,6 +15,9 @@ const mutations = {
     // replace with new one
     const foundTodo = state.todoList.find(todo => todo.id === updatedTodo.id)
     foundTodo.text = updatedTodo.text
+  },
+  'DELETE_TODO_BY_ID' (state, todoId) {
+    state.todoList = state.todoList.filter(todo => todo.id !== todoId)
   }
 }
 
@@ -22,8 +25,11 @@ const actions = {
   addTodo ({ commit }, todo) {
     commit('ADD_TODO', todo)
   },
-  updateTodo ({ commit }, todo) {
+  updateTodoById ({ commit }, todo) {
     commit('SET_TODO_BY_ID', todo)
+  },
+  deleteTodoById ({ commit }, todoId) {
+    commit('DELETE_TODO_BY_ID', todoId)
   }
 }
 

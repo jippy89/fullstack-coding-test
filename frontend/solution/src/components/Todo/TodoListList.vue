@@ -4,7 +4,7 @@
     <span v-else>{{ todo.text }}</span>
     <button v-if="editMode === false" @click="toggleEdit">Edit</button>
     <button v-else @click="saveTodo">Save</button>
-    <button>Delete</button>
+    <button @click="deleteTodo">Delete</button>
   </li>
 </template>
 
@@ -26,7 +26,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'updateTodo'
+      'updateTodoById',
+      'deleteTodoById'
     ]),
     toggleEdit () {
       this.editMode = !this.editMode
@@ -37,9 +38,12 @@ export default {
     },
     saveTodo () {
       // Save todo via Vuex
-      this.updateTodo(this.todoObj)
       // Toggle 'editMode'
+      this.updateTodoById(this.todoObj)
       this.toggleEdit()
+    },
+    deleteTodo () {
+      this.deleteTodoById(this.todo.id)
     }
   }
 }
