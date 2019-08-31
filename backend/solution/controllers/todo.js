@@ -27,6 +27,11 @@ const todoController = new class ToDoController {
 
   // PUT /todo/:todoId
   putTodoById (req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    
     const todoId = req.params.todoId
     const { title, deadline, done_flag } = req.body
     return todoModel.update(res, { id: todoId, title, deadline, done_flag })
