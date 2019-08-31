@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator')
 const todoModel = require('../models/todo')
 
 const todoController = new class ToDoController {
@@ -15,6 +16,11 @@ const todoController = new class ToDoController {
 
   // POST /todo
   postTodo (req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
     const { title, deadline } = req.body
     return todoModel.create(res, { title, deadline })
   }
