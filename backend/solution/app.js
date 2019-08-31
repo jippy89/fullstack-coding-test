@@ -1,7 +1,11 @@
-const express = require('express'),
-      app     = express()
+const express     = require('express'),
+      app         = express(),
+      bodyParser  = require('body-parser')
 
 const PORT = 3000
+
+// Express Plugins
+app.use(bodyParser.json())
 
 // Routes
 const todoRoutes = require('./routes/todo')
