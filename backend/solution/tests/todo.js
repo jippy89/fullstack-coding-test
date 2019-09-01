@@ -185,4 +185,20 @@ describe("Todo", () => {
         })
     })
   })
+
+  describe("DELETE /todo/:todoId", () => {
+    it("should delete todo with the id of 1", (done) => {
+      const id = 1
+      chai.request(app)
+        .delete(`/todo/${id}`)
+        .type('json')
+        .end((err, res) => {
+          res.should.have.status(200)
+          chai.expect(res.body).to.be.empty
+          // I don't find similiar, code with 'should' keyword :(
+          // And it's already 7 PM
+          done()
+        })
+    })
+  })
 });
