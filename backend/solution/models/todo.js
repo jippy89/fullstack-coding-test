@@ -66,9 +66,9 @@ const Todo = new class TodoSchema {
       if (foundTodo) {
         updatedTodo = {
           id: foundTodo.id,
-          title: !updatedTodo.title ? foundTodo.title : updatedTodo.title, 
-          deadline: !updatedTodo.deadline ? foundTodo.deadline : updatedTodo.deadline, 
-          done_flag: !updatedTodo.done_flag ? foundTodo.done_flag : updatedTodo.done_flag 
+          title: updatedTodo.title == null ? foundTodo.title : updatedTodo.title, 
+          deadline: updatedTodo.deadline == null ? foundTodo.deadline : updatedTodo.deadline, 
+          done_flag: updatedTodo.done_flag == null ? foundTodo.done_flag.toString() : updatedTodo.done_flag.toString() 
         }
         parsedTodoList[foundTodo.id - 1] = updatedTodo
         fs.writeFile(dbPath, JSON.stringify(parsedTodoList), (err) => {

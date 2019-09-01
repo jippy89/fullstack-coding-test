@@ -30,15 +30,8 @@ router.put('/:todoId',
         .isISO8601().withMessage("Must be in 'yyyy-mm-dd' format"),
       body('done_flag')
         .optional()
-        .custom(value => {
-          switch (value) {
-            case 'true':
-              return true
-            case 'false':
-              return true
-          }
-          return false
-        }).withMessage("Must be a string containing 'true' or 'false'"),
+        .custom(value => typeof value === 'boolean')
+          .withMessage("Must be boolean type"),
       TodoController.putTodoById)
 
 // DELETE /todo/:todoId
