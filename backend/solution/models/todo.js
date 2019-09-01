@@ -92,7 +92,7 @@ const Todo = new class TodoSchema {
       const filteredTodoList = parsedTodoList.filter(todo => todo.id != todoId)
       fs.writeFile(dbPath, JSON.stringify(filteredTodoList), err => {
         if(err) throw err
-        return res.status(200).json()
+        return res.status(200).end()
       })
     })
   }
