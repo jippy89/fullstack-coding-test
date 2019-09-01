@@ -1,5 +1,5 @@
 <template>
-  <li class="card">
+  <li>
     <form v-if="editMode" style="display:inline;">
       <input  type="text" :value="todo.text" @input="onInput">
       <button @click="saveTodo">Save</button>
@@ -50,9 +50,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.card {
-  border: 1px solid black;
-}
-</style>
