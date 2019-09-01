@@ -2,10 +2,20 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
+import fs from 'fs';
+import path from 'path';
+import publicPath from '../utils/path'
 
 // Configure chai
 chai.use(chaiHttp);
 chai.should();
+
+// Clean up 'db.json'
+const dbPath = path.join(publicPath, 'db', 'db.json')
+fs.writeFileSync(dbPath, JSON.stringify([]), (err) => {
+  if(err) throw err
+  console.log("'db.json' has been cleaned, proceed to test phase")
+})
 
 describe("Todo", () => {
   describe("POST /todo", () => {
