@@ -143,4 +143,46 @@ describe("Todo", () => {
         });
     });
   });
+
+  describe("PUT /todo/:todoId", () => {
+    it("should update todo 'done_flag' property  with id of 1 to 'true'", (done) => {
+      const id = 1
+      chai.request(app)
+        .put(`/todo/${id}`)
+        .type('json')
+        .send({
+          "done_flag": true
+        })
+        .end((err, res) => {
+          res.should.have.status(200)
+          res.body.should.be.a('object');
+          res.body.should.have.property('id');
+          res.body.id.should.equal(1);
+          res.body.should.have.property('title');
+          res.body.title.should.equal("Todo title");
+          res.body.should.have.property('done_flag');
+          res.body.done_flag.should.equal("true");
+          res.body.should.have.property('deadline');
+          res.body.deadline.should.equal("2019-10-01");
+          done()
+        })
+    })
+
+    it("should REJECT update because it can't find the todo of id '5'", (done) => {
+      const id = 5
+      chai.request(app)
+        .put(`/todo/${id}`)
+        .type('json')
+        .send({
+          "done_flag": true
+        })
+        .end((err, res) => {
+          res.should.have.status(404)
+          res.body.should.be.a('object');
+          res.body.should.have.property('msg');
+          res.body.msg.should.equal("Todo not found");
+          done()
+        })
+    })
+  })
 });
