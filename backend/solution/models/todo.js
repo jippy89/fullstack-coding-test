@@ -19,7 +19,7 @@ const Todo = new class TodoSchema {
     return fs.readFile(dbPath, 'utf8', (err, todoListBuffer) => {
       if (err) throw err
       const parsedTodoList = JSON.parse(todoListBuffer)
-      res.json(parsedTodoList)
+      res.status(200).json(parsedTodoList)
     })
   }
 
@@ -28,7 +28,7 @@ const Todo = new class TodoSchema {
       if (err) throw err
       const parsedTodoList = JSON.parse(todoListBuffer)
       const foundTodo = parsedTodoList.find(todo => todo.id == todoId)
-      res.json(foundTodo)
+      res.status(200).json(foundTodo)
     })
   }
 
@@ -42,7 +42,7 @@ const Todo = new class TodoSchema {
       if(!parsedTodoList || parsedTodoList.length === 0) {
         return fs.writeFile(dbPath, JSON.stringify([todo]), (err) => {
           if(err) throw err
-          return res.json(todo)
+          return res.status(201).json(todo)
         })
       } else { // if data exist
         const { id } = parsedTodoList[parsedTodoList.length -1]
@@ -50,7 +50,7 @@ const Todo = new class TodoSchema {
         parsedTodoList.push(todo)
         return fs.writeFile(dbPath, JSON.stringify(parsedTodoList), (err) => {      
           if(err) throw err
-          return res.json(todo)
+          return res.status(201).json(todo)
         })
       }
     })
@@ -73,10 +73,10 @@ const Todo = new class TodoSchema {
         parsedTodoList[foundTodo.id - 1] = updatedTodo
         fs.writeFile(dbPath, JSON.stringify(parsedTodoList), (err) => {
           if(err) throw err
-          return res.json(parsedTodoList[foundTodo.id - 1])
+          return res.status(200).json(parsedTodoList[foundTodo.id - 1])
         })
       } else {
-        res.json({
+        res.status(404).json({
           msg: "Todo not found"
         })
       }
@@ -92,7 +92,7 @@ const Todo = new class TodoSchema {
       const filteredTodoList = parsedTodoList.filter(todo => todo.id != todoId)
       fs.writeFile(dbPath, JSON.stringify(filteredTodoList), err => {
         if(err) throw err
-        return res.json()
+        return res.status(200).json()
       })
     })
   }
