@@ -18,3 +18,5 @@ app.use('/todo', todoRoutes)
 app.listen(PORT, () => {
   console.log(`Express server has started at localhost:${PORT}`)
 })
+
+module.exports = app
