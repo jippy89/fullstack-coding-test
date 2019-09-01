@@ -5,7 +5,7 @@ function looper (arr, i=0) {
   const sameNumIndex = arr.indexOf(splicedNum)  
   if (i > arr.length - 1) {
     arr.splice(i,0,splicedNum)    
-    return arr
+    return arr.reduce((acc, cur) => acc += cur)
   } else if (sameNumIndex !== -1) {
     ++splicedNum
     arr.splice(i,0,splicedNum)
@@ -16,6 +16,4 @@ function looper (arr, i=0) {
   }
 }
 
-const result = looper(nums).reduce((acc, cur) => acc += cur)
-
-console.log(result)
+console.log(looper(nums))
