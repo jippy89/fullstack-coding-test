@@ -1,9 +1,11 @@
 <template>
   <li class="card">
-    <input v-if="editMode" type="text" :value="todo.text" @input="onInput">
+    <form v-if="editMode" style="display:inline;">
+      <input  type="text" :value="todo.text" @input="onInput">
+      <button @click="saveTodo">Save</button>
+    </form>
     <span v-else>{{ todo.text }}</span>
     <button v-if="editMode === false" @click="toggleEdit">Edit</button>
-    <button v-else @click="saveTodo">Save</button>
     <button @click="deleteTodo">Delete</button>
   </li>
 </template>
